@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+      :root{
+          --base-font-size:62.5%;
+          --baseline:32px;
+          --baseline-multiplier:1;
+
+          --h1-font-size:3rem;
+          --h1-baseline-multiplier:2;
+
+          --h2-font-size:2.5rem;
+          --h2-baseline-multiplier:2;
+
+          --h3-font-size:2rem;
+          --h3-baseline-multiplier:2;
+
+          --h4-font-size:1.5em;
+          --h4-baseline-multiplier:2;
+
+          --h5-font-size:1.25em;
+          --h5-baseline-multiplier:2;
+
+          --h6-font-size:1em;
+          --h6-baseline-multiplier:2;
+
+          --p-font-size:1.5em;
+          --p-baseline-multiplier:1;
+
+
+          /**Do Not Change anything from here*/
+          
+          font-size: var(--base-font-size);
+          --final-baseline:calc(var(--baseline) * var(--baseline-multiplier));
+      }
+      h1{
+        font-size: var(--h1-font-size);
+        --final-baseline:calc(var(--baseline) * var(--h1-baseline-multiplier));
+        line-height: calc(var(--h1-font-size) * var(--baseline-multiplier));
+        --baseline-view:calc(var(--h1-font-size) * var(--baseline-multiplier));
+      }
+      h2{
+        font-size: var(--h2-font-size);
+        --final-baseline:calc(var(--baseline) * var(--h2-baseline-multiplier));
+        line-height: calc(var(--h2-font-size) * var(--baseline-multiplier));
+        --baseline-view:calc(var(--h2-font-size) * var(--baseline-multiplier));
+      }
+      h3{
+        font-size: var(--h3-font-size);
+        --final-baseline:calc(var(--baseline) * var(--h3-baseline-multiplier));
+        line-height: calc(var(--h3-font-size) * var(--baseline-multiplier));
+        --baseline-view:calc(var(--h3-font-size) * var(--baseline-multiplier));
+      }
+      h4{
+        font-size: var(--h4-font-size);
+        --final-baseline:calc(var(--baseline) * var(--h4-baseline-multiplier));
+        line-height: calc(var(--h4-font-size) * var(--baseline-multiplier));
+        --baseline-view:calc(var(--h4-font-size) * var(--baseline-multiplier));
+      }
+      h5{
+      font-size: var(--h5-font-size);
+      --final-baseline:calc(var(--baseline) * var(--h5-baseline-multiplier));
+        line-height: calc(var(--h5-font-size) * var(--baseline-multiplier));
+        --baseline-view:calc(var(--h5-font-size) * var(--baseline-multiplier));
+      }
+      h6{
+      font-size: var(--h6-font-size);
+      --final-baseline:calc(var(--baseline) * var(--h6-baseline-multiplier));
+        line-height: calc(var(--h6-font-size) * var(--baseline-multiplier));
+        --baseline-view:calc(var(--h6-font-size) * var(--baseline-multiplier));
+      }
+      p{
+      font-size: var(--p-font-size);
+      --final-baseline:calc(var(--baseline) * var(--p-baseline-multiplier));
+        line-height: calc(var(--p-font-size) * var(--baseline-multiplier));
+        --baseline-view:calc(var(--p-font-size) * var(--baseline-multiplier));
+        /* margin-top: calc(var(--baseline) * -3); */
+      }
+      .bg-line{
+          background-image: linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 0px);
+          background-size: 100% var(--baseline-view);
+          background-position-y: var(--final-baseline);
+          
+      }
+      .bg-line-red{
+          background-image: linear-gradient(rgba(255, 0, 0, 1) 1px, transparent 0px);
+          background-size: 100% calc(var(--final-baseline) / 8);
+          background-position-y: var(--final-baseline);
+      }
+      body{
+        line-height: var(--final-baseline);
+      }
+      .single:before{
+        content: "";
+        display: inline-block;
+        vertical-align: baseline;
+        height: var(--final-baseline);
+      }
+      table{
+        border-collapse: collapse;
+      }
+      td,th {
+        border: 1px solid #777;
+        width: 250px;
+        line-height: calc(var(--final-baseline) - 1px);
+      }
+      ul,dl,ol{
+        padding-inline-start: 2em;
+      }
+      dd{
+        margin-inline-start: 2em;
+      }
+      input,select,textarea{
+         line-height: calc(var(--final-baseline) - 1px);
+         border: 1px solid;
+        box-sizing: border-box;
+        height: calc(var(--final-baseline));
+        margin-bottom: calc(var(--final-baseline) - 1px);
+        margin-top: 1px;
+        padding:0 5px;
+      }
+      input[type="file"]{
+        border:0;
+      }
+      input[type="button"]{
+        border-radius: 3px;
+      }
+      .flex{
+          display: flex;
+      }
+      .flex div{
+          padding:0 10px;
+          width:33.33%;
+      }
+      .flex div:nth-child(2n-1){
+          background-color: #f0f0f0;
+      }.flex div:nth-child(2n){
+          background-color: #e0e0e0;
+      }
+      img{
+        height:calc(var(--final-baseline) * 8);
+        --temp-margin:calc(var(--final-baseline) / 2);
+        margin-bottom: calc(var(--final-baseline));
+        vertical-align: top;
+      }
+      video{
+        height:calc(var(--final-baseline) * 8);
+        --temp-margin:calc(var(--final-baseline) / 2);
+        margin-bottom: calc(var(--final-baseline) -1px);
+        vertical-align: top;
+      }
+      audio,textarea{
+
+        height:calc(var(--final-baseline));
+        vertical-align: top;
+      }
+      blockquote:before,q:before{
+        display: inline-block;
+        vertical-align: baseline;
+        height: var(--final-baseline);
+        content: open-quote !important;
+        margin-bottom: var(--final-baseline);
+      }
+      blockquote:after,q:after {
+        content: close-quote !important;
+        vertical-align: 0px !important;
+      }
+      a,abbr,b,bdo,blockquote,del,em,i,ins,label,mark,meter,p,pre,q,s,small,span,strong,u{
+        display: inline-block;
+      }
+      form{
+        padding-top: calc(var(--final-baseline) / 2 + 2px);
+      }
+    </style>
+  </head>
+  <body class="bg-line-red">
+    <h1 class="single bg-line">This is H1</h1>
+    <h2 class="single bg-line">This is H2</h2>
+    <h3 class="single bg-line">This is H3</h3>
+    <h4 class="single bg-line">This is H4</h4>
+    <h5 class="single bg-line">This is H5</h5>
+    <h6 class="single bg-line">This is H6</h6>
+    <p class="single bg-line">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis placeat hic nesciunt reiciendis corrupti! Aliquam eos eum maiores officiis asperiores provident beatae iusto aperiam unde assumenda, quas inventore, magnam officia. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum expedita inventore sapiente natus odit, accusantium ad molestias, quisquam culpa ducimus labore tempora! Voluptate, voluptas optio architecto accusamus atque assumenda praesentium. Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, omnis! Est placeat dolores sequi explicabo ad tenetur consequuntur asperiores voluptatem, unde dolorem, cupiditate, ullam hic a adipisci. Omnis, modi eius. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, soluta fugit autem delectus fuga unde inventore illum eos, amet nemo eaque culpa. Eos consequatur eum harum autem amet, reiciendis eius!
+    </p>
+    <abbr class="single bg-line" title="">This is abbr tag</abbr>
+    <br>
+    <b class="single bg-line">This is Bold Tag</b>
+    <br>
+    <bdo class="single bg-line" dir="rtl">This paragraph will go right-to-left using Bdo Tag.</bdo>
+    <br>
+    <blockquote class="single bg-line" cite="http://www.worldwildlife.org/who/index.html">
+      This paragraph is written in blockquote text
+    </blockquote>
+    <br>
+    <del class="single bg-line">This text is written in Del tag</del>
+    <br>
+    <em class="single bg-line">This is em tag.</em>
+    <br>
+    <i class="single bg-line">This is Italic</i>
+    <br>
+    <ins class="single bg-line">This is Ins tag</ins>
+    <br>
+    <mark class="single bg-line">This is mark tag</mark>
+    <br>
+    <meter id="disk_d" value="0.6">60%</meter>
+    <br>
+    <pre class="single bg-line">This is Pre tag</pre>
+    <q class="single bg-line">This is Q tag</q>
+    <br>
+    <s class="single bg-line">This is S tag</s>
+    <br>
+    <small class="single bg-line">This is Small tag</small>
+    <br>
+    <strong class="single bg-line">This is Strong tag</strong>
+    <br>
+    <p class="single bg-line">This is P tag<sub>This is Sub tag</sub></p>
+    <br>
+    <p class="single bg-line">This is P tag<sup>This is Sup tag</sup></p>
+    <br>
+    <u class="single bg-line">This is Underline</u>
+    <br>
+
+
+    <label class="single bg-line" for="browser">Datalist Tag Example:</label>
+<input list="browsers" name="browser" id="browser">
+<datalist id="browsers">
+  <option value="Edge">
+  <option value="Firefox">
+  <option value="Chrome">
+  <option value="Opera">
+  <option value="Safari">
+</datalist>
+
+<br>
+
+<details class="bg-line">
+  <summary class="bg-line single">Details Tag Example</summary>
+  <p class="bg-line single">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, quasi ut quo adipisci nobis architecto possimus sequi rem porro, tenetur perferendis quod voluptas voluptatibus officia fugiat. Ab dolorum temporibus quos!</p>
+</details>
+
+
+    <a href="/" class="single bg-line">This is a link</a><br>
+    <span class="single bg-line">This is a Span.</span>
+    <ul class="single bg-line-red">
+      <li>Apple</li>
+      <li>Banana</li>
+      <li>Mango</li>
+    </ul>
+    <ol class="single bg-line-red">
+      <li>Apple</li>
+      <li>Banana</li>
+      <li>Mango</li>
+    </ol>
+    <dl class="single bg-line-red">
+      <dt>Coffee</dt>
+      <dd>Black hot drink</dd>
+      <dt>Milk</dt>
+      <dd>White cold drink</dd>
+    </dl>
+    <br>
+    <table class="bg-line-red">
+      <tr>
+        <th>Name</th>
+        <th>Branch</th>
+        <th>Reg. No</th>
+      </tr>
+      <tr>
+        <td>Ayush</td>
+        <td>21</td>
+        <td>CSE</td>
+      </tr>
+      <tr>
+        <td>Brajesh</td>
+        <td>21</td>
+        <td>CSE</td>
+      </tr>
+      <tr>
+        <td>Ranveer</td>
+        <td>21</td>
+        <td>CSE</td>
+      </tr>
+      <tr>
+        <td>Himanshu</td>
+        <td>21</td>
+        <td>CSE</td>
+      </tr>
+    </table>
+    
+    <br>
+    <img class="bg-line" src="https://images.news18.com/ibnlive/uploads/2021/07/1627377451_nature.jpg" alt="Image Here">
+    <figcaption class="single bg-line">Fig 1: Image Caption</figcaption><br>
+    <video width="320" height="240" controls>
+      <source src="movie.mp4" type="video/mp4">
+      <source src="movie.ogg" type="video/ogg">
+      Your browser does not support the video tag.
+    </video>
+    <br>
+    <br>
+    <audio controls>
+      <source src="horse.ogg" type="audio/ogg">
+      <source src="horse.mp3" type="audio/mpeg">
+      Your browser does not support the audio tag.
+    </audio>
+    <div class="flex">
+        <div class="">
+            <h1 class="single bg-line">This is H1</h1>
+            <p class="single bg-line">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat nihil praesentium, ipsa illum laboriosam magni, aspernatur, adipisci dolore necessitatibus debitis quos voluptate perferendis obcaecati similique eligendi autem sapiente a. Corrupti.</p>
+        </div>
+        <div class="">
+            <h2 class="single bg-line">This is H1</h2>
+            <p class="single bg-line">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat nihil praesentium, ipsa illum laboriosam magni, aspernatur, adipisci dolore necessitatibus debitis quos voluptate perferendis obcaecati similique eligendi autem sapiente a. Corrupti.</p>
+        </div>
+        <div class="">
+            <h3 class="single bg-line">This is H1</h3>
+            <p class="single bg-line">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat nihil praesentium, ipsa illum laboriosam magni, aspernatur, adipisci dolore necessitatibus debitis quos voluptate perferendis obcaecati similique eligendi autem sapiente a. Corrupti.</p>
+        </div>
+    </div>
+    
+    <form class="bg-line-red">
+      <fieldset>
+        <legend class="single bg-line">Form:</legend>
+        <label>Name: </label><input type="text"><br>
+        <label>Email: </label><input type="email"><br>
+        <label>Phone: </label><input type="phone"><br>
+        <label>Select: </label><select>
+                                  <option>Select</option>
+                                  <optgroup label="Group 1">
+                                    <option>One</option>
+                                    <option>Two</option>
+                                  </optgroup>
+                                  <optgroup label="Group 2">
+                                    <option>Three</option>
+                                    <option>Four</option>
+                                    <option>Five</option>
+                                  </optgroup>
+                                </select>
+                                <br>
+        <label>Date: </label><input type="date"><br>
+        <label>URL: </label><input type="url"><br>
+
+        <label>Click Me Button! </label><input type="button" value="Click Me Button!"><br>
+        <label>Checkbox </label><input type="checkbox">You agree all terms and condition<br>
+        <label>Color: </label><input type="color"><br>
+        <label>Datetime Local: </label><input type="datetime-local"><br>
+        <label>Month: </label><input type="month"><br>
+        <label>File: </label><input type="file"><br>
+        <label>Number: </label><input type="number"><br>
+        <label>Password: </label><input type="password"><br>
+        <label>Radio Button: </label><input type="radio"><label>Select One</label><br>
+        <label>Range: </label><input type="range"><br>
+        <label>Range: </label><input type="search"><br>
+        <label>Time: </label><input type="time"><br>
+        <label>Week: </label><input type="week"><br>
+        <textarea></textarea><br>
+        <input type="reset"><br>
+        <input type="submit"><br>
+      </fieldset>
+    </form>
+    <br><br>
+  </body>
+</html>
